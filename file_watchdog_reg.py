@@ -20,10 +20,9 @@ if __name__ == "__main__":
         )
     observer.start()            #監視開始
     try:
+        subprocess.call(".\\highlight.py", shell=True)
         while True:             #ctrl-Cが押されるまで実行
             time.sleep(1)       #1秒停止
     except KeyboardInterrupt:   #ctrl-C実行時
         observer.stop()         #監視修了
     observer.join()
-
-    subprocess.call([".\\highlight.py"])
