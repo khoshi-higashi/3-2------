@@ -57,11 +57,11 @@ def func():
     i += 1
 
   # 使った画像は使用済みファイルに移動
-  move_glob(used_dir_name, "./mikakou/*.PNG")
-  move_glob(used_dir_name, "./mikakou/*.JPG")
+  move_glob(used_dir_name, "./input/*.PNG")
+  move_glob(used_dir_name, "./input/*.JPG")
 
   # 終了時に元の画像を削除
-  shutil.rmtree(dir_name)
+  # shutil.rmtree(dir_name)
 
   # すべて完了
   print("Complete!")
