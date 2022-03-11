@@ -26,4 +26,4 @@ if __name__ == "__main__":
         observer.stop()         #監視修了
     observer.join()
 
-    subprocess.call(".\highlight.py")
+    subprocess.call([".\highlight.py"])
