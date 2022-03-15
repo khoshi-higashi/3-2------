@@ -64,7 +64,8 @@ def func():
   # shutil.rmtree(dir_name)
 
   # すべて完了
-  print("Complete!")
+  print("Exit a program")
 
 if __name__ == "__main__":
+  print("Execute a program")
   func()
