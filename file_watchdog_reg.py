@@ -15,10 +15,6 @@ class LoggingEventHandler2(LoggingEventHandler):
         print("削除されました" + event.src_path)
 
 if __name__ == "__main__":
-    #ロギングの設定
-    # logging.basicConfig(level=logging.INFO,
-    #                     format='%(asctime)s - %(message)s',
-    #                     datefmt='%Y-%m-%d %H:%M:%S')
     path = sys.argv[1] if len(sys.argv) > 1 else '.'    #監視対象のpathを設定
     event_handler = LoggingEventHandler2()   #イベントハンドラ生成
     observer = Observer()       #監視オブジェクト生成
