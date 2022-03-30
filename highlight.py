@@ -2,6 +2,7 @@ from PIL import Image, ImageChops
 import os # ファイルやフォルダ操作
 import glob
 import shutil
+import datetime # 現在時刻を取得
 
 dir_name = "input" # 画像が入っているフォルダ
 new_dir_name = "output" # 画像を保存する先のフォルダ
@@ -43,6 +44,11 @@ def func():
   i = 1
 
   for file in files: # ホーム画面用の処理
+    dt_now = datetime.datetime.now()
+    print(dt_now.strftime('%Y%m%d_%H%M%S'))
+    name = str(dt_now.strftime('%Y%m%d_%H%M%S'))
+    name += ".png"
+
     im_original = Image.open(os.path.join(dir_name, file))
     width, height = im_original.size
 
@@ -50,7 +56,8 @@ def func():
     im_crop = im_original.crop((0, 41+50, width, 41+50+width))
 
     # 切り抜いた画像を保存
-    im_crop.save(os.path.join(new_dir_name, file))
+    # im_crop.save(os.path.join(new_dir_name, file))
+    im_crop.save(os.path.join(new_dir_name, name))
 
     # 1枚ごとに完了を報告
     print(str(i) + " done!")
