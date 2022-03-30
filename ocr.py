@@ -29,6 +29,6 @@ for file in files:
 
     list.append(text)
 
-    print(text)
+    print(text.split("\n")[-2])
     print()
-print(list)
+# print(list)
