@@ -11,12 +11,18 @@ os.environ['PATH'] = os.environ['PATH'] + path
 tools = pyocr.get_available_tools()
 tool = tools[0]
 
-#OCR対象の画像ファイルを読み込む
-# img = Image.open("test.jpg")
-img = Image.open("output\\20220330_090522.png")
+input_dir = "ocr"
+if not os.path.exists(input_dir):
+    os.mkdir(input_dir)
+files = os.listdir(input_dir)
+for file in files:
+    #OCR対象の画像ファイルを読み込む
+    # img = Image.open("test.jpg")
+    img = Image.open(os.path.join(input_dir, file))
 
-#画像から文字を読み込む
-builder = pyocr.builders.TextBuilder(tesseract_layout=6)
-text = tool.image_to_string(img, lang="jpn", builder=builder)
+    #画像から文字を読み込む
+    builder = pyocr.builders.TextBuilder(tesseract_layout=6)
+    text = tool.image_to_string(img, lang="jpn", builder=builder)
 
-print(text)
+    print(text)
+    print()
