@@ -5,6 +5,17 @@ import shutil
 import datetime # 現在時刻を取得
 import pyocr
 
+#インストールしたTesseract-OCRのパスを環境変数「PATH」へ追記する。
+#OS自体に設定してあれば以下の2行は不要
+path='C:\\Program Files\\Tesseract-OCR'
+os.environ['PATH'] = os.environ['PATH'] + path
+
+#pyocrへ利用するOCRエンジンをTesseractに指定する。
+tools = pyocr.get_available_tools()
+tool = tools[0]
+
+builder = pyocr.builders.TextBuilder(tesseract_layout=6)
+
 dir_name = "input" # 画像が入っているフォルダ
 new_dir_name = "output" # 画像を保存する先のフォルダ
 used_dir_name ="used"
@@ -18,23 +29,14 @@ def crop_center(pil_img, crop_width, crop_height): # 画像の中心を切り出
                         (img_height + crop_height) // 2))
 
 def ocr_name(im_original):
-  #インストールしたTesseract-OCRのパスを環境変数「PATH」へ追記する。
-  #OS自体に設定してあれば以下の2行は不要
-  path='C:\\Program Files\\Tesseract-OCR'
-  os.environ['PATH'] = os.environ['PATH'] + path
-
-  #pyocrへ利用するOCRエンジンをTesseractに指定する。
-  tools = pyocr.get_available_tools()
-  tool = tools[0]
 
   #画像から文字を読み込む
-  builder = pyocr.builders.TextBuilder(tesseract_layout=6)
   text = tool.image_to_string(im_original, lang="jpn", builder=builder)
 
   list = []
   list.append(text)
 
-  print(text.split("\n")[-2])
+  # print(text.split("\n")[-2])
 
   return text.split("\n")[-2]
 
@@ -75,7 +77,7 @@ def func():
     im_crop = im_original.crop((0, 41+50, width, 41+50+width))
 
     dt_now = datetime.datetime.now()
-    print(dt_now.strftime('%Y%m%d_%H%M%S'))
+    # print(dt_now.strftime('%Y%m%d_%H%M%S'))
     name = ocr_name(im_crop)
     name += "_"
     name += str(dt_now.strftime('%Y%m%d_%H%M%S'))
@@ -86,7 +88,7 @@ def func():
     im_crop.save(os.path.join(new_dir_name, name))
 
     # 1枚ごとに完了を報告
-    print(str(i) + " done!")
+    print(str(i) + " " + name + " done!")
     i += 1
 
   # 使った画像は使用済みファイルに移動
