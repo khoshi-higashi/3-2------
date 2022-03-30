@@ -15,6 +15,9 @@ input_dir = "ocr"
 if not os.path.exists(input_dir):
     os.mkdir(input_dir)
 files = os.listdir(input_dir)
+
+list = []
+
 for file in files:
     #OCR対象の画像ファイルを読み込む
     # img = Image.open("test.jpg")
@@ -24,5 +27,8 @@ for file in files:
     builder = pyocr.builders.TextBuilder(tesseract_layout=6)
     text = tool.image_to_string(img, lang="jpn", builder=builder)
 
+    list.append(text)
+
     print(text)
     print()
+print(list)
