@@ -3,6 +3,7 @@ import os # ファイルやフォルダ操作
 import glob
 import shutil
 import datetime # 現在時刻を取得
+import time
 
 dir_name = "input" # 画像が入っているフォルダ
 new_dir_name = "output" # 画像を保存する先のフォルダ
@@ -56,11 +57,12 @@ for file in files: # ホーム画面用の処理
 
   # 切り抜いた画像を保存
   # nim.save(os.path.join(new_dir_name, file))
-  im_crop.save(os.path.join(new_dir_name, name))
+  nim.save(os.path.join(new_dir_name, name))
 
   # 1枚ごとに完了を報告
   print(str(i) + " done!")
   i += 1
+  time.sleep(1)
 
 # 使った画像は使用済みファイルに移動
 move_glob(used_dir_name, "./mikakou/*.PNG")
