@@ -69,7 +69,7 @@ move_glob(used_dir_name, "./mikakou/*.PNG")
 move_glob(used_dir_name, "./mikakou/*.JPG")
 
 # 終了時に元の画像を削除
-shutil.rmtree(dir_name)
+# shutil.rmtree(dir_name)
 
 # すべて完了
 print("Complete!")
