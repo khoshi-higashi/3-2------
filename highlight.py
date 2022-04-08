@@ -43,7 +43,11 @@ def ocr_name(im_original):
     body = text.split("\n")[0]
     body = body.replace("\"", "")
     body = body.replace(" ", "")
+    body = body.replace("?", "")
     title = text.split("\n")[-2]
+    title = title.replace("\"", "")
+    title = title.replace(" ", "")
+    title = title.replace("?", "")
 
     return body, title
 

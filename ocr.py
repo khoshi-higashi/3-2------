@@ -37,4 +37,7 @@ for file in files:
     print()
     print(text.split("\n")[-2])
     print()
+    f = open('myfile.txt', 'a')
+    f.write(text.split("\n")[-2].replace("\"", ""))
+    f.write("\n")
 # print(list)
