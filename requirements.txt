@@ -1,9 +1,15 @@
 altgraph==0.17.2
+autopep8==1.6.0
+flake8==4.0.1
 future==0.18.2
+mccabe==0.6.1
 pefile==2021.9.3
 Pillow==9.0.1
+pycodestyle==2.8.0
+pyflakes==2.4.0
 pyinstaller==4.10
 pyinstaller-hooks-contrib==2022.2
 pyocr==0.8.1
 pywin32-ctypes==0.2.0
+toml==0.10.2
 watchdog==2.1.6
