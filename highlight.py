@@ -88,17 +88,13 @@ def func():
         im_crop = im_original.crop((0, 41+50, width, 41+50+width))
 
         dt_now = datetime.datetime.now()
-        # print(dt_now.strftime('%Y%m%d_%H%M%S'))
         body, title = ocr_name(im_crop)
         name = title
-        # name += "_"
-        # name += str(dt_now.strftime('%Y%m%d_%H%M%S'))
         name += "_"
         name += body
         name += ".png"
 
         # 切り抜いた画像を保存
-        # im_crop.save(os.path.join(new_dir_name, file))
         im_crop.save(os.path.join(new_dir_name, name))
 
         # 1枚ごとに完了を報告
