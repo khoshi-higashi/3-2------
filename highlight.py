@@ -91,16 +91,21 @@ def func():
 
         dt_now = datetime.datetime.now()
         body, title = ocr_name(im_crop)
-        name = title
-        name += "_"
-        name += body
-        name += ".png"
+        name_png = title
+        name_png += "_"
+        name_png += body
+        name_jpg = name_png + ".jpg"
+        name_png += ".png"
 
         # 切り抜いた画像を保存
-        im_crop.save(os.path.join(new_dir_name, name))
+        im_crop.save(os.path.join(new_dir_name, name_png))
+
+        im_crop = im_crop.convert('RGB') # RGBA(png)→RGB(jpg)へ変換
+        im_crop.save(os.path.join(new_dir_name, name_jpg), "JPEG", quality=95)
+
 
         # 1枚ごとに完了を報告
-        print(str(i) + " " + name + " done!")
+        print(str(i) + " " + name_png + " done!")
         i += 1
 
     # 使った画像は使用済みファイルに移動
