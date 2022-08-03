@@ -98,7 +98,7 @@ def func():
         name_png += ".png"
 
         # 切り抜いた画像を保存
-        im_crop.save(os.path.join(new_dir_name, name_png))
+        # im_crop.save(os.path.join(new_dir_name, name_png))
 
         im_crop = im_crop.convert('RGB') # RGBA(png)→RGB(jpg)へ変換
         im_crop.save(os.path.join(new_dir_name, name_jpg), "JPEG", quality=95)
