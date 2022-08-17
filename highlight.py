@@ -106,7 +106,7 @@ def func():
         im_crop.save(os.path.join(new_dir_name, name_jpg), "JPEG", quality=95)
 
         # 1枚ごとに完了を報告
-        print(str(i) + " " + name_png + " done!")
+        print(str(i) + " " + name_jpg + " done!")
         i += 1
 
     # 使った画像は使用済みファイルに移動
