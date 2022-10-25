@@ -8,8 +8,11 @@ import pyocr
 # インストールしたTesseract-OCRのパスを環境変数「PATH」へ追記する。
 # OS自体に設定してあれば以下の2行は不要
 path = 'C:\\Program Files\\Tesseract-OCR'
+path_tesseract = 'C:\\Program Files\\Tesseract-OCR'
 # path = 'C:\\Users\\Owner\\OneDrive - 室蘭工業大学\\画像編集\\3tai2\\jpn_vert.traineddata'
-os.environ['PATH'] = os.environ['PATH'] + path
+# os.environ['PATH'] = os.environ['PATH'] + path
+if path_tesseract not in os.environ["PATH"].split(os.pathsep):
+    os.environ["PATH"] += os.pathsep + path_tesseract
 
 # pyocrへ利用するOCRエンジンをTesseractに指定する。
 tools = pyocr.get_available_tools()
